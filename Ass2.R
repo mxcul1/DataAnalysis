@@ -1,7 +1,7 @@
 ####Install packages if needed####
 install.packages("tree")
 install.packages("e1071")
-install.packages(("ROCR"))
+install.packages("ROCR")
 install.packages("randomForest")
 install.packages("adabag")
 
