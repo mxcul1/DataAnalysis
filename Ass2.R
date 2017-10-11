@@ -128,19 +128,23 @@ print(as.numeric(PBD.ROC.boost.AUC@y.values))
 
 
 ####Question 7####
-#Most important classifier
-
-#RandomFOrest best classifier
-varImpPlot(PBD.rf)
-#shows duration to be the best classifier
-
-
+#Most important variable (MIV)
+#Decision tree MIV - through summary
+print(summary(PBD.tree))
+#Bayes MIV - through ?
+print(summary(PBD.Bayes))
+#Bagging MIV - through importance variable
+PBD.bag$importance
+#Boosting MIV - through importance variable
+PBD.boost$importance
+#Random Forest MIV - through importance variable
+PBD.rf$importance
 
 
 ####Question8####
 #RandomForest attempt to improve by increasing tree size and changing mtry value
 library(randomForest)
-PBD.rf.improved=randomForest(subscribed~.,data=PBD.train, ntree=10000, mtry=4)
+PBD.rf.improved=randomForest(subscribed~.,data=PBD.train, ntree=10000, mtry=5)
 PBD.rf.improved.predict=predict(PBD.rf.improved,PBD.test)
 table(observed=	PBD.test$subscribed,predicted	=	PBD.rf.improved.predict)
 (accuracy = mean(PBD.rf.improved.predict==PBD.test$subscribed))
