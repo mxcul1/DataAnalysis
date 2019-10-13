@@ -159,8 +159,3 @@ table(predicted = PBD.tree.prune.predict, actual = PBD.test$subscribed)
 PBD.boost.improved = boosting(subscribed~.,data=PBD.train,mfinal=3)
 PBD.boost.improved.predict=predict.boosting(PBD.boost.improved,newdata=PBD.test)
 (accuracy = 1-PBD.boost.improved.predict$error)
-
-
-
-
-
